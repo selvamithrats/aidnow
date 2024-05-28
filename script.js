@@ -25,9 +25,20 @@ function submitRequest() {
     }
 
     alert('Your request has been submitted. We will contact you shortly. 😊');
-    document.getElementById('requestForm').reset();
+
+    // Reset specification fields
+    const specificationInputs = document.querySelectorAll('.item-count');
+    specificationInputs.forEach(input => {
+        input.value = ''; // Clear input value
+        const itemId = input.dataset.itemId;
+        const countSpan = document.getElementById(itemId + 'Count');
+        if (countSpan) {
+            countSpan.textContent = '(0)'; // Reset count to zero
+        }
+    });
+
+    document.getElementById('requestForm').reset(); // Reset the entire form
 }
-gi
 
 
 
