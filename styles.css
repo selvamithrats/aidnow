@@ -8,24 +8,57 @@ body {
 header {
     background: linear-gradient(135deg, #4CAF50, #388E3C);
     color: white;
-    text-align: center;
-    padding: 1em 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    margin: 0;
-    font-size: 2.5em;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+nav .logo {
+    font-size: 1.5em;
     font-weight: bold;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #e0e0e0;
 }
 
 main {
+    display: flex;
+    justify-content: center;
     padding: 20px;
+}
+
+.form-section {
     background-color: white;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
 }
 
 .form-group {
@@ -106,19 +139,19 @@ footer p {
     margin: 0;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+footer a {
+    color: #4CAF50;
+    text-decoration: none;
+    margin: 0 5px;
 }
 
-.fadeIn {
-    animation: fadeIn 0.8s ease-in-out;
+footer a:hover {
+    text-decoration: underline;
 }
+
+
+
+
+
 
 

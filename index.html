@@ -10,92 +10,97 @@
 </head>
 <body>
     <header>
-        <h1>AIDNOW - Request Form</h1>
-        <p>Emergency Contact: 99009 44004</p>
+        <nav>
+            <div class="logo">AIDNOW</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
-        <form id="requestForm">
-            <div class="page" id="page1">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+        <section class="form-section">
+            <h1>AIDNOW - Request Form</h1>
+            <p>Emergency Contact: 99009 44004</p>
+            <form id="requestForm">
+                <div class="page" id="page1">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address/Location:</label>
+                        <input type="text" id="address" name="address" placeholder="Enter your address or click to share your location" required>
+                        <button type="button" onclick="initMap()">Share Location</button>
+                    </div>
+                    <div id="map" style="height: 300px; width: 100%; display: none;"></div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number:</label>
+                        <input type="tel" id="mobile" name="mobile" required>
+                    </div>
+                    <button type="button" onclick="nextPage()">Next</button>
                 </div>
-                <div class="form-group">
-                    <label for="address">Address/Location:</label>
-                    <input type="text" id="address" name="address" placeholder="Enter your address or click to share your location" required>
-                    <button type="button" onclick="initMap()">Share Location</button>
+                <div class="page" id="page2" style="display: none;">
+                    <div class="form-group">
+                        <label for="altMobile">Alternate Mobile Number:</label>
+                        <input type="tel" id="altMobile" name="altMobile">
+                    </div>
+                    <div class="form-group">
+                        <label>Specifications:</label>
+                        <ul id="needsList">
+                            <li class="main-point">
+                                <label for="food">Food</label>
+                                <input type="number" id="food" name="food" class="item-count" data-item-id="food" min="0" max="10">
+                                <span id="foodCount" class="count">(0)</span>
+                                <textarea id="foodComment" name="foodComment" placeholder="Additional comments..."></textarea>
+                            </li>
+                            <li class="main-point">
+                                <label for="clothes">Clothes</label>
+                                <input type="number" id="clothes" name="clothes" class="item-count" data-item-id="clothes" min="0" max="10">
+                                <span id="clothesCount" class="count">(0)</span>
+                                <textarea id="clothesComment" name="clothesComment" placeholder="Additional comments..."></textarea>
+                            </li>
+                            <li class="main-point">
+                                <label for="temporaryShelter">Temporary Shelter</label>
+                                <input type="number" id="temporaryShelter" name="temporaryShelter" class="item-count" data-item-id="temporaryShelter" min="0" max="10">
+                                <span id="temporaryShelterCount" class="count">(0)</span>
+                                <textarea id="temporaryShelterComment" name="temporaryShelterComment" placeholder="Additional comments..."></textarea>
+                            </li>
+                            <li class="main-point">
+                                <label for="medicines">Medicines</label>
+                                <input type="number" id="medicines" name="medicines" class="item-count" data-item-id="medicines" min="0" max="10">
+                                <span id="medicinesCount" class="count">(0)</span>
+                                <textarea id="medicinesComment" name="medicinesComment" placeholder="Additional comments..."></textarea>
+                            </li>
+                            <li class="main-point">
+                                <label for="sanitaryNapkins">Sanitary Napkins</label>
+                                <input type="number" id="sanitaryNapkins" name="sanitaryNapkins" class="item-count" data-item-id="sanitaryNapkins" min="0" max="10">
+                                <span id="sanitaryNapkinsCount" class="count">(0)</span>
+                                <textarea id="sanitaryNapkinsComment" name="sanitaryNapkinsComment" placeholder="Additional comments..."></textarea>
+                            </li>
+                            <li class="main-point">
+                                <label for="others">Others</label>
+                                <input type="number" id="others" name="others" class="item-count" data-item-id="others" min="0" max="10">
+                                <span id="othersCount" class="count">(0)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button type="button" onclick="submitRequest()">Submit</button>
+                    <button type="button" onclick="prevPage()">Previous</button>
                 </div>
-                <div id="map" style="height: 300px; width: 100%; display: none;"></div>
-                <div class="form-group">
-                    <label for="mobile">Mobile Number:</label>
-                    <input type="tel" id="mobile" name="mobile" required>
+                <div class="page" id="page3" style="display: none;">
+                    <h2>Your request has been submitted. We will contact you shortly.</h2>
                 </div>
-                <button type="button" onclick="nextPage()">Next</button>
-            </div>
-            <div class="page" id="page2" style="display: none;">
-                <div class="form-group">
-                    <label for="altMobile">Alternate Mobile Number:</label>
-                    <input type="tel" id="altMobile" name="altMobile">
-                </div>
-                <div class="form-group">
-                    <label>Specifications:</label>
-                    <ul id="needsList">
-                        <li class="main-point">
-                            <label for="food">Food</label>
-                            <input type="number" id="food" name="food" class="item-count" data-item-id="food" min="0" max="10">
-                            <span id="foodCount" class="count">(0)</span>
-                            <textarea id="foodComment" name="foodComment" placeholder="Additional comments..."></textarea>
-                        </li>
-                        <li class="main-point">
-                            <label for="clothes">Clothes</label>
-                            <input type="number" id="clothes" name="clothes" class="item-count" data-item-id="clothes" min="0" max="10">
-                            <span id="clothesCount" class="count">(0)</span>
-                            <textarea id="clothesComment" name="clothesComment" placeholder="Additional comments..."></textarea>
-                        </li>
-                        <li class="main-point">
-                            <label for="temporaryShelter">Temporary Shelter</label>
-                            <input type="number" id="temporaryShelter" name="temporaryShelter" class="item-count" data-item-id="temporaryShelter" min="0" max="10">
-                            <span id="temporaryShelterCount" class="count">(0)</span>
-                            <textarea id="temporaryShelterComment" name="temporaryShelterComment" placeholder="Additional comments..."></textarea>
-                        </li>
-                        <li class="main-point">
-                            <label for="medicines">Medicines</label>
-                            <input type="number" id="medicines" name="medicines" class="item-count" data-item-id="medicines" min="0" max="10">
-                            <span id="medicinesCount" class="count">(0)</span>
-                            <textarea id="medicinesComment" name="medicinesComment" placeholder="Additional comments..."></textarea>
-                        </li>
-                        <li class="main-point">
-                            <label for="infants">Infants</label>
-                            <input type="number" id="infants" name="infants" class="item-count" data-item-id="infants" min="0" max="10">
-                            <span id="infantsCount" class="count">(0)</span>
-                            <textarea id="infantsComment" name="infantsComment" placeholder="Additional comments..."></textarea>
-                        </li>
-                        <li class="main-point">
-                            <label for="sanitaryNapkins">Sanitary Napkins</label>
-                            <input type="number" id="sanitaryNapkins" name="sanitaryNapkins" class="item-count" data-item-id="sanitaryNapkins" min="0" max="10">
-                            <span id="sanitaryNapkinsCount" class="count">(0)</span>
-                            <textarea id="sanitaryNapkinsComment" name="sanitaryNapkinsComment" placeholder="Additional comments..."></textarea>
-                        </li>
-                        <li class="main-point">
-                            <label for="others">Others</label>
-                            <input type="number" id="others" name="others" class="item-count" data-item-id="others" min="0" max="10">
-                            <span id="othersCount" class="count">(0)</span>
-                        </li>
-                    </ul>
-                </div>
-                <button type="button" onclick="submitRequest()">Submit</button>
-                <button type="button" onclick="prevPage()">Previous</button>
-            </div>
-            <div class="page" id="page3" style="display: none;">
-                <h2>Your request has been submitted. We will contact you shortly.</h2>
-            </div>
-        </form>
+            </form>
+        </section>
     </main>
     <footer>
-        <p>© 2024 AIDNOW</p>
+        <p>© 2024 AIDNOW | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#contact">Contact</a></p>
     </footer>
 </body>
 </html>
+
 
 
 

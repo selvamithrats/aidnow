@@ -56,12 +56,3 @@ function geocodeLatLng(geocoder, map, infowindow, latlng) {
 }
 
 
-
-
-
-
-
-
-
-
-
